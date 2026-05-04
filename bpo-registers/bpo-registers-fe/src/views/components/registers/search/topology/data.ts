@@ -1,0 +1,32 @@
+export const topologyData = [
+  {
+    applicationNumber: "001",
+    documentNumber: "001",
+    applicationDate: "15.12.1999",
+    expiryDate: "31.12.2009",
+    name: "ИНВЕРТОР",
+    representative: null,
+    owner: "Д-р Емил Габриел Бенатов",
+    creator: "Д-р Емил Габриел Бенатов",
+  },
+  {
+    applicationNumber: "002",
+    documentNumber: "002",
+    applicationDate: "19.01.2000",
+    expiryDate: "31.12.2010",
+    name: "КОМПЮТЪРНО ПЕРИФЕРНО УСТРОЙСТВО ЗА ЗАПИС И ЧЕТЕНЕ НА ДАННИ ОТ ТВЪРДОТЕЛЕН НОСИТЕЛ",
+    representative: "Красимира Димитрова",
+    owner: "БЪЛГАРСКИ СПОРТЕН ТОТАЛИЗАТОР",
+    creator: null,
+  },
+  {
+    applicationNumber: "003",
+    documentNumber: "003",
+    applicationDate: "19.6.2015",
+    expiryDate: "30.6.2025",
+    name: "СВЕТОДИОДЕН ИЗЛЪЧВАТЕЛ 9W (HL 126)",
+    representative: "Татяна Лекова",
+    owner: '"ХИБРИДНИ ИНТЕГРАЛНИ СХЕМИ" АД ',
+    creator: null,
+  },
+];

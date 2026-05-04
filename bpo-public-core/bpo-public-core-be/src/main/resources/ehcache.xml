@@ -1,0 +1,56 @@
+<config
+        xmlns='http://www.ehcache.org/v3'
+        xmlns:jsr107='http://www.ehcache.org/v3/jsr107'>
+
+    <service>
+        <jsr107:defaults enable-management="true" enable-statistics="true"/>
+    </service>
+    <cache alias="AgentSpecialityServiceImpl" uses-template="default"/>
+    <cache alias="AgentStatusServiceImpl" uses-template="default"/>
+    <cache alias="CountryServiceImpl" uses-template="default"/>
+    <cache alias="ObjectTypeServiceImpl" uses-template="default"/>
+    <cache alias="MarkKindServiceImpl" uses-template="default"/>
+    <cache alias="ObjectSubtypeServiceImpl" uses-template="default"/>
+    <cache alias="PatentIpcClassServiceImpl" uses-template="default"/>
+    <cache alias="PlantTaxonServiceImpl" uses-template="default"/>
+    <cache alias="PublicationSectionServiceImpl" uses-template="default"/>
+    <cache alias="RepresentativeTypeServiceImpl" uses-template="default"/>
+    <cache alias="StatusMapServiceImpl" uses-template="default"/>
+    <cache alias="ViennaClassServiceImpl" uses-template="default"/>
+
+    <cache-template name="default">
+        <expiry>
+            <tti unit="hours">2</tti>
+        </expiry>
+        <listeners>
+            <listener>
+                <class>bg.duosoft.bpo.publik.core.config.CacheEventLogger</class>
+                <event-firing-mode>ASYNCHRONOUS</event-firing-mode>
+                <event-ordering-mode>UNORDERED</event-ordering-mode>
+                <events-to-fire-on>CREATED</events-to-fire-on>
+                <events-to-fire-on>EXPIRED</events-to-fire-on>
+                <events-to-fire-on>EVICTED</events-to-fire-on>
+                <events-to-fire-on>REMOVED</events-to-fire-on>
+            </listener>
+        </listeners>
+        <heap unit="entries">2000</heap>
+    </cache-template>
+
+    <cache-template name="ttl-1hour">
+        <expiry>
+            <ttl unit="hours">1</ttl>
+        </expiry>
+        <listeners>
+            <listener>
+                <class>bg.duosoft.bpo.publik.core.config.CacheEventLogger</class>
+                <event-firing-mode>ASYNCHRONOUS</event-firing-mode>
+                <event-ordering-mode>UNORDERED</event-ordering-mode>
+                <events-to-fire-on>CREATED</events-to-fire-on>
+                <events-to-fire-on>EXPIRED</events-to-fire-on>
+                <events-to-fire-on>EVICTED</events-to-fire-on>
+                <events-to-fire-on>REMOVED</events-to-fire-on>
+            </listener>
+        </listeners>
+        <heap unit="entries">2000</heap>
+    </cache-template>
+</config>

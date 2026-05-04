@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>bg.duosoft.bpo</groupId>
+        <artifactId>bpo-registers</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
+	</parent>
+    <groupId>bg.duosoft.bpo</groupId>
+    <artifactId>bpo-registers-service</artifactId>
+    <name>bpo-registers-service</name>
+    <description>bpo-registers-service</description>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>bg.duosoft.bpo</groupId>
+            <artifactId>bpo-registers-persistence</artifactId>
+            <version>${bpo.public.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>bg.duosoft.bpo</groupId>
+            <artifactId>bpo-registers-dto</artifactId>
+            <version>${bpo.public.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>bg.duosoft.bpo</groupId>
+            <artifactId>bpo-public-core-service</artifactId>
+            <version>${bpo.public.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>bg.duosoft.bpo</groupId>
+            <artifactId>bpo-file-service</artifactId>
+            <version>${bpo.common.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.hibernate.search</groupId>
+            <artifactId>hibernate-search-mapper-orm</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate.search</groupId>
+            <artifactId>hibernate-search-backend-elasticsearch</artifactId>
+        </dependency>
+    </dependencies>
+
+</project>

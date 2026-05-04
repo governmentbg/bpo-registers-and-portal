@@ -1,0 +1,1 @@
+ALTER VIEW public.vw_object_relationships SET SCHEMA ip_objects;

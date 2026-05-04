@@ -1,0 +1,2 @@
+insert into nomenclatures.tmview_publication (publication_section, publication_code_tmview)  values (27, 'Transfer of rights');
+insert into nomenclatures.tmview_publication (publication_section, publication_code_tmview)  values (175, 'Other amendments');
