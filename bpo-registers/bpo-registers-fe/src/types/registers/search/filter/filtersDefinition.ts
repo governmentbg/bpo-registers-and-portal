@@ -1,0 +1,51 @@
+export type FilterName =
+  | "objectName"
+  | "objectRange"
+  | "nameExactMatch"
+  | "markKind"
+  | "markType"
+  | "objectSubtype"
+  | "filingNumber"
+  | "filingDate"
+  | "registrationNumber"
+  | "protectedNumber"
+  | "registrationDate"
+  | "expirationDate"
+  | "viennaClasses"
+  | "status"
+  | "publications"
+  | "representatives"
+  | "applicantOwner"
+  | "niceClasses"
+  | "ipoArea"
+  | "objectType"
+  | "legalGroundTypes"
+  | "documentType"
+  | "documentDate"
+  | "documentNumber"
+  | "objectId"
+  | "agentCode"
+  | "agentSpeciality"
+  | "agentName"
+  | "partnershipName"
+  | "city"
+  | "priority"
+  | "abstract"
+  | "origin"
+  | "ipcClasses"
+  | "cpcClasses"
+  | "inventor"
+  | "author"
+  | "latinClassification"
+  | "bgClassification"
+  | "locarnoClasses"
+  | "mainDesignName"
+  | "singleDesignName"
+  | "singleDesignVerbalElement";
+
+export type FiltersDefinition = {
+  [key in FilterName]?: {
+    id: FilterName;
+    label: string;
+  };
+};

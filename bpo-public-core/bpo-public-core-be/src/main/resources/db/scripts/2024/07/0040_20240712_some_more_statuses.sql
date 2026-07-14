@@ -1,0 +1,12 @@
+--liquibase formatted sql
+
+--changeset ggeorgiev:0040 splitStatements:false
+INSERT INTO nomenclatures.backoffice_status_map (backoffice_status_name, for_deletion, bpo_online_status, bpo_online_status_en, show_expiration_date, code) VALUES ('ПТ Мигрирана заявка', 1, 'ПТ Мигрирана заявка', 'без достъп', 1, '10-184');
+INSERT INTO nomenclatures.backoffice_status_map (backoffice_status_name, for_deletion, bpo_online_status, bpo_online_status_en, show_expiration_date, code) VALUES ('ПТ Формална експертиза', 1, 'ПТ Формална експертиза', 'без достъп', 1, '10-197');
+INSERT INTO nomenclatures.backoffice_status_map (backoffice_status_name, for_deletion, bpo_online_status, bpo_online_status_en, show_expiration_date, code) VALUES ('ПТ Оттеглена заявка', 0, 'ПТ Оттеглена заявка', 'ПТ Оттеглена заявка', 1, '10-199');
+INSERT INTO nomenclatures.backoffice_status_map (backoffice_status_name, for_deletion, bpo_online_status, bpo_online_status_en, show_expiration_date, code) VALUES ('ПТ ФЕ прекратена', 1, 'ПТ ФЕ прекратена', 'без достъп', 1, '10-201');
+INSERT INTO nomenclatures.backoffice_status_map (backoffice_status_name, for_deletion, bpo_online_status, bpo_online_status_en, show_expiration_date, code) VALUES ('ПТ Отказана заявка', 0, 'ПТ Отказана заявка', 'ПТ Отказана заявка', 1, '10-215');
+INSERT INTO nomenclatures.backoffice_status_map (backoffice_status_name, for_deletion, bpo_online_status, bpo_online_status_en, show_expiration_date, code) VALUES ('ПТ Прекратено производство', 0, 'ПТ Прекратено производство', 'ПТ Прекратено производство', 1, '10-222');
+INSERT INTO nomenclatures.backoffice_status_map (backoffice_status_name, for_deletion, bpo_online_status, bpo_online_status_en, show_expiration_date, code) VALUES ('ПТ За проверка срок за плащане на такси', 0, 'ПТ За проверка срок за плащане на такси', 'ПТ В Експертиза', 1, '10-236');
+INSERT INTO nomenclatures.backoffice_status_map (backoffice_status_name, for_deletion, bpo_online_status, bpo_online_status_en, show_expiration_date, code) VALUES ('ПТ Прекратен поради изтичане на срок на действие', 0, 'ПТ Прекратен поради изтичане на срок на действие', 'ПТ Прекратен поради изтичане на срок на действие', 1, '10-240');
+INSERT INTO nomenclatures.backoffice_status_map (backoffice_status_name, for_deletion, bpo_online_status, bpo_online_status_en, show_expiration_date, code) VALUES ('ПТ Прекратен поради неплащане на годишни такси', 0, 'ПТ Прекратен поради неплащане на годишни такси', 'ПТ Прекратен поради неплащане на годишни такси', 1, '10-774');

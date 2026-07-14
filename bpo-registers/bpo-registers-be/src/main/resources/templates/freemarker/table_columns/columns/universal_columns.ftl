@@ -1,0 +1,20 @@
+<#escape x as x?html>
+    <td>
+        ${object.objectId!""}
+    </td>
+    <td>
+        ${object.filingDate?date.iso?string("dd.MM.yyyy")!""}
+    </td>
+    <td>
+        ${object.title!""}
+    </td>
+    <td>
+        ${object.registrationNbr!""}
+    </td>
+    <td>
+        ${object.statusName!""}
+    </td>
+    <td>
+        ${object.mainOwner!""}
+    </td>
+</#escape>

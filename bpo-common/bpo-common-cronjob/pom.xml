@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>bg.duosoft.bpo</groupId>
+    <artifactId>bpo-common-cronjob</artifactId>
+    <name>bpo-common-cronjob</name>
+    <description>Bpo common cronjob</description>
+	<properties>
+		<cronjob.version>7.0-SNAPSHOT</cronjob.version>
+	</properties>
+	<parent>
+		<groupId>bg.duosoft.bpo</groupId>
+		<artifactId>bpo-common</artifactId>
+		<version>1.0.0-SNAPSHOT</version>
+		<relativePath>../pom.xml</relativePath>
+	</parent>
+    <dependencies>
+        <dependency>
+            <groupId>bg.duosoft.bpo</groupId>
+            <artifactId>bpo-email-producer</artifactId>
+            <version>${bpo.common.version}</version>
+        </dependency>
+		<dependency>
+            <groupId>bg.duosoft</groupId>
+            <artifactId>cronjob</artifactId>
+            <version>${cronjob.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+</project>

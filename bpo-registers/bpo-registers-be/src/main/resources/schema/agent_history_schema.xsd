@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns="http://www.bpo.bg/schema/represent/history" targetNamespace="http://www.bpo.bg/schema/represent/history"
+	elementFormDefault="qualified" attributeFormDefault="unqualified"
+	version="1.0">
+
+	<xs:annotation>
+		<xs:documentation>BPO Schema for Representative Register History
+			Logging</xs:documentation>
+	</xs:annotation>
+
+	<xs:element name="History" type="HistoryType" />
+
+	<xs:complexType name="HistoryType">
+		<xs:sequence>
+			<xs:element name="HistoryRecord" type="HistoryRecordType"
+				minOccurs="0" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="HistoryRecordType">
+		<xs:sequence>
+			<xs:element name="HistoryRecordKind" type="HistoryRecordKindType"
+				minOccurs="0" />
+			<xs:element name="HistoryRecordData" type="HistoryRecordDataType"
+				minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:simpleType name="HistoryRecordKindType">
+		<xs:restriction base="xs:token">
+			<xs:enumeration value="ADDRESS_NAME_CHANGE" />
+			<xs:enumeration value="NEW_RECORD_CREATED" />
+			<xs:enumeration value="RECORD_RENEWED" />
+			<xs:enumeration value="ACTIVE_RECORD_CHANGED" />
+			<xs:enumeration value="RECORD_TEMPORARY_INACTIVATED" />
+			<xs:enumeration value="RECORD_INVALIDATED" />
+			<xs:enumeration value="CORRECTION_PUBLIC_DETAILS" />
+			<xs:enumeration value="CORRECTION_PRIVATE_DETAILS" />
+			<xs:enumeration value="CORRECTION_RECORD_MERGE" />
+			<xs:enumeration value="DELETE" />
+
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:complexType name="HistoryRecordDataType">
+		<xs:sequence>
+			<xs:element name="HistoryGrounds" type="HistoryGroundType"
+				minOccurs="0" />
+			<xs:element name="HistoryOldData" type="HistoryDataType"
+				minOccurs="0" />
+			<xs:element name="HistoryNewData" type="HistoryDataType"
+				minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="HistoryGroundType">
+		<xs:sequence>
+			<xs:element name="HistoryGroundCode" type="xs:string"
+				minOccurs="0" />
+			<xs:element name="HistoryGroundDescription" type="xs:string"
+				minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="HistoryDataType">
+		<xs:choice minOccurs="0">
+			<xs:element name="HistoryPartnershipData" type="HistoryPartnershipDataType" />
+			<xs:element name="HistoryRepresentativeData" type="HistoryRepresentativeDataType" />
+		</xs:choice>
+	</xs:complexType>
+
+	<xs:complexType name="HistoryPartnershipDataType">
+		<xs:sequence>
+			<xs:element name="PartnershipCode" type="xs:string"
+				minOccurs="0" />
+			<xs:element name="PartnershipType" type="PartnershipType"
+				minOccurs="0"/>
+			<xs:element name="FormattedNameAddress" type="FormattedNameAddressType"
+				minOccurs="0" />
+			<xs:element name="NationalNumber" type="xs:string"
+				minOccurs="0" />
+			<xs:element name="PartnershipRepresentativeName" type="xs:string"
+				minOccurs="0" />
+			<xs:element name="PartnershipRepresentativeKind" type="PartnershipRepresentativeKindType"
+				minOccurs="0" />
+			<xs:element name="IpObjects" type="IpObjectsType"
+				minOccurs="0" />
+			<xs:element name="OriCountryCode" type="xs:string"
+				minOccurs="0" />
+			<xs:element name="OriRepresentativesNames" type="xs:string"
+				minOccurs="0" />
+			<xs:element name="PartnershipMembers" type="PartnershipMembersType"
+				minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="HistoryRepresentativeDataType">
+		<xs:sequence>
+			<xs:element name="RepresentativeCode" type="xs:integer"
+				minOccurs="0" />
+			<xs:element name="FormattedNameAddress" type="FormattedNameAddressType"
+				minOccurs="0" />
+			<xs:element name="CivilIdKind" type="CivilIdKindType"
+				minOccurs="0" />
+			<xs:element name="CivilId" type="xs:string" minOccurs="0" />
+			<xs:element name="IdCardNumber" type="xs:string"
+				minOccurs="0" />
+			<xs:element name="IdCardIssueDate" type="xs:date"
+				minOccurs="0" />
+			<xs:element name="DiplomaSpeciality" type="xs:string"
+				minOccurs="0" />
+			<xs:element name="DiplomaSpecialityEn" type="xs:string"
+				minOccurs="0" />
+			<xs:element name="IpObjects" type="IpObjectsType"
+				minOccurs="0" />
+			<xs:element name="QualificationCountryCode" type="xs:string"
+				minOccurs="0" />
+			<xs:element name="LivingAddress" type="xs:string"
+				minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:simpleType name="PartnershipRepresentativeKindType">
+		<xs:restriction base="xs:token">
+			<xs:enumeration value="MANAGER" />
+			<xs:enumeration value="MEMBER" />
+			<xs:enumeration value="SOLE_OWNER" />
+			<xs:enumeration value="MEMBER_OF_MANAGEMENT_BOARD" />
+			<xs:enumeration value="MEMBER_OF_BOARD_OF_DIRECTORS" />
+			<xs:enumeration value="OTHER" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="IpObjectsType">
+		<xs:restriction base="xs:token">
+			<xs:enumeration value="MARKS_GEO_INDICATIONS_DESIGNS" />
+			<xs:enumeration value="PATENTS_UTILITY_MODELS" />
+			<xs:enumeration value="BOTH" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="PartnershipType">
+		<xs:restriction base="xs:token">
+			<xs:enumeration value="PARTNERSHIP"/>
+			<xs:enumeration value="COMPANY"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:complexType name="PartnershipMembersType">
+		<xs:sequence>
+			<xs:element name="PartnershipMember" type="PartnershipMemberType"
+				minOccurs="0" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="PartnershipMemberType">
+		<xs:sequence>
+			<xs:element name="PartnershipMemberCode" type="xs:integer"
+				minOccurs="0" />
+			<xs:element name="PartnershipMemberName" type="xs:string"
+				minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:simpleType name="CivilIdKindType">
+		<xs:restriction base="xs:token">
+			<xs:enumeration value="NATIONAL_ID" />
+			<xs:enumeration value="FOREIGN_ID" />
+			<xs:enumeration value="PERSONAL_DOCUMENT" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:complexType name="FormattedNameAddressType">
+		<xs:sequence>
+			<xs:element name="Name" type="xs:string" minOccurs="0" />
+			<xs:element name="NameEn" type="xs:string" minOccurs="0" />
+			<xs:element name="Address" type="AddressType" minOccurs="0"
+				maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="AddressType">
+		<xs:sequence>
+			<xs:element name="CountryCode" type="xs:string" minOccurs="0" />
+			<xs:element name="CityName" type="xs:string" minOccurs="0" />
+			<xs:element name="AddressStreet" type="xs:string"
+				minOccurs="0" />
+			<xs:element name="PostalCode" type="xs:string" minOccurs="0" />
+			<xs:element name="CityNameEn" type="xs:string" minOccurs="0" />
+			<xs:element name="AddressStreetEn" type="xs:string"
+				minOccurs="0" />
+			<xs:element name="Phone" type="xs:string" minOccurs="0" />
+			<xs:element name="Email" type="xs:string" minOccurs="0" />
+			<xs:element name="Website" type="xs:string" minOccurs="0" />
+			<xs:element name="CorrespondenceAddress" type="xs:string"
+				minOccurs="0" />
+			<xs:element name="CorrespondenceAddressEn" type="xs:string"
+				minOccurs="0" />
+			<xs:element name="CorrespondenceAddressPostalCode" type="xs:string"
+				minOccurs="0" />
+			<xs:element name="CorrespondenceAddressPhone" type="xs:string"
+				minOccurs="0" />
+			<xs:element name="CorrespondenceAddressEmail" type="xs:string"
+				minOccurs="0" />
+			<xs:element name="CorrespondenceAddressFax" type="xs:string"
+				minOccurs="0" />
+			<xs:element name="CorrespondenceAddressCityName" type="xs:string"
+				minOccurs="0" />
+			<xs:element name="CorrespondenceAddressCityNameEn" type="xs:string"
+				minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

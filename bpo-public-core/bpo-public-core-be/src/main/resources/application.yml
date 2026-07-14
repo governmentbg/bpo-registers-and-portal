@@ -1,0 +1,35 @@
+spring:
+  application:
+    name: bpo-public-core-be
+  cache:
+    jcache:
+      config: classpath:ehcache.xml
+
+---
+spring:
+  config:
+    activate.on-profile:
+      - dev
+      - office
+    import: configserver:http://duosoft-smallapps.devzone.sirma.bg:8302/bpo-config-server
+
+---
+spring:
+  config:
+    activate.on-profile:
+      - stage
+    import: configserver:http://test-minio.bpo.bg:8302/bpo-config-server
+
+---
+spring:
+  config:
+    activate.on-profile:
+      - production
+    import: configserver:http://dhco-vm-minio.bpo.bg:8302/bpo-config-server
+
+---
+spring:
+  config:
+    activate.on-profile:
+      - local
+    import: configserver:http://localhost:8302/bpo-config-server

@@ -1,0 +1,137 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: 2024-08-15T11:56:51Z
+  labels:
+    app: bpo-registers
+  name: bpo-registers
+spec:
+  containers:
+    # IPAS Database
+    - name: ipas-db
+      image: mcr.microsoft.com/mssql/server:2022-CU14-ubuntu-22.04
+      env:
+        - name: ACCEPT_EULA
+          value: "Y"
+        - name: MSSQL_SA_PASSWORD
+          value: "LvYj,rF+kmiGQKq"
+      ports:
+        - containerPort: 1433
+          hostPort: 1433
+      resources: {}
+      securityContext:
+        capabilities:
+          drop:
+            - CAP_MKNOD
+            - CAP_NET_RAW
+            - CAP_AUDIT_WRITE
+      volumeMounts:
+        - mountPath: /var/opt/mssql
+          name: ipas-db-volume-pvc
+    # BPO Registers database
+    - name: registers-db
+      image: docker.io/library/postgres:12.20-bullseye
+      env:
+        - name: POSTGRES_USER
+          value: "bpo"
+        - name: POSTGRES_PASSWORD
+          value: "yjie%(nri;nn3Da"
+      ports:
+        - containerPort: 5432
+          hostPort: 5432
+      resources: { }
+      securityContext:
+        capabilities:
+          drop:
+            - CAP_MKNOD
+            - CAP_NET_RAW
+            - CAP_AUDIT_WRITE
+      volumeMounts:
+        - mountPath: /var/lib/postgresql/data
+          name: registers-db-volume-pvc
+    # Cloudbeaver DB management tool
+    - name: cloudbeaver
+      image: docker.io/dbeaver/cloudbeaver:24.1.5
+      ports:
+        - containerPort: 8978
+          hostPort: 8978
+      resources: {}
+      securityContext:
+        capabilities:
+          drop:
+            - CAP_MKNOD
+            - CAP_NET_RAW
+            - CAP_AUDIT_WRITE
+      volumeMounts:
+        - mountPath: /opt/cloudbeaver/workspace
+          name: cloudbeaver-volume-pvc
+      restartPolicy: Never
+    # Minio
+    - name: minio
+      image: quay.io/minio/minio:RELEASE.2024-08-17T01-24-54Z-cpuv1
+      env:
+        - name: MINIO_ROOT_USER
+          value: "admin"
+        - name: MINIO_ROOT_PASSWORD
+          value: "b5@7B6K2~Ml1yM-"
+      args:
+        - server
+        - /data
+        - --console-address
+        - :9001
+      ports:
+        - containerPort: 9000
+          hostPort: 9000
+        - containerPort: 9001
+          hostPort: 9001
+      resources: { }
+      securityContext:
+        capabilities:
+          drop:
+            - CAP_MKNOD
+            - CAP_NET_RAW
+            - CAP_AUDIT_WRITE
+      volumeMounts:
+        - mountPath: /data
+          name: minio-volume-pvc
+    # Elasticsearch
+    - name: elasticsearch
+      image: docker.elastic.co/elasticsearch/elasticsearch:8.15.0
+      resources:
+        limits:
+          memory: 4Gi
+      env:
+        - name: discovery.type
+          value: single-node
+        - name: xpack.security.enabled
+          value: false
+        - name: ES_JAVA_OPTS
+          value: "-Xms2g -Xmx2g"
+      ports:
+        - containerPort: 9200
+          hostPort: 9200
+        - containerPort: 9300
+          hostPort: 9300
+    # Mailcatcher
+    - name: mailcatcher
+      image: docker.io/dockage/mailcatcher:0.9.0
+      ports:
+        - containerPort: 1080
+          hostPort: 1080
+        - containerPort: 1025
+          hostPort: 1025
+  volumes:
+    - name: ipas-db-volume-pvc
+      persistentVolumeClaim:
+        claimName: ipas-db-volume
+    - name: registers-db-volume-pvc
+      persistentVolumeClaim:
+        claimName: registers-db-volume
+    - name: cloudbeaver-volume-pvc
+      persistentVolumeClaim:
+        claimName: cloudbeaver-volume
+    - name: minio-volume-pvc
+      persistentVolumeClaim:
+        claimName: minio-volume
+status: {}
